@@ -62,8 +62,8 @@ const someFunction1 = (arr1) => {
   let sum = arr1[1] + arr[2] //! O(1) mathematical equation so that is constant time
 
   while (condition) {
-    sum = arr[5] + arr[7]
-  } //! O(1) ? O(n) it is a math equation but in a while loop
+    sum = arr[5] + arr[7] //! O(1)
+  } //! O(n)
 
   for (let i = 0; i < arr1.length; i++) {
     for (let i = 0; i < arr1.length; i++) {
@@ -74,6 +74,7 @@ const someFunction1 = (arr1) => {
   } //! O(n^3) 
 }
 
+//! O(2n) + O(n) + O(n^3) = O(n^3)
 
 //todo: Problem 7: Please explain in 3-5 sentences why we can ignore constants and consolidate our time complexities.
 
