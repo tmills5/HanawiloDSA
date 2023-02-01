@@ -159,3 +159,142 @@ const convertToString = arr2.join(' ') //! O(n)
 
 
 //todo: Problem 13: For each one of these code blocks, please identify the time & space complexity and explanation of why
+
+// 1) 
+
+function findFirstIndexOfNumber(number, array) {
+  for (let i = 0; i < array.length; i++) { //! O(n) because it is looping through the array
+    if (array[i] === number) { //! O(1) because it is comparing the element to the number
+      return i; //! O(1) because it is returning a number
+    }
+  }
+  return -1; //! O(1) because it is returning a number
+}
+
+//! TIME COMPLEXITY: O(n) worst case 
+//! SPACE COMPLEXITY: O(1) because is is returning a number
+
+// 2) Time Complexity going to be Linear  
+
+function findEachIndexOfNumber(number,array) { let
+  arrayOfIndexes = []; //! O(1) because it is creating an empty array
+  array.forEach(function(element, index) { //! O(n) because it is looping through the array
+    if (element === number) { //! O(1) because it is comparing the element to the number
+      arrayOfIndexes.push(index); //! O(1) because it is pushing the index to the array
+    }
+  });
+  return arrayOfIndexes; //! O(1) because it is returning the array
+}
+//! TIME COMPLEXITY: O(n) worst case
+//! SPACE COMPLEXITY: O(n) because it is returning an array
+
+// 3) 
+
+const array = [36, 14, 1, 7, 21];
+
+function higherOrLower(array) {
+  if (array[array.length -1 ] > array[0]) {
+      return "Higher";
+    else if (array[array.length -1 ] < array[0]) {
+      return "Lower";
+    } else {
+      return "Neither";
+    }
+  }
+}
+
+// 4) 
+
+const array = [1,2,3,4,5,6,7,8];
+function determineSumOfSequentialArray(array) { let
+sum = 0;
+for (let i = 0; i < array.length; i++) { sum +=
+array[i];
+}
+return sum;
+}
+
+// 5) 
+
+const array = [1,2,3,4,5,6,7,8];
+function determineSumOfSequentialArray(array) {
+return array.length * (array.length + 1)/2;
+}
+
+// 6) 
+
+function searchSortedArray(number, array, beginIndex = 0, endIndex = array.length - 1) {
+  let middleIndex = Math.floor((beginIndex + endIndex)/2);
+  if (array[middleIndex] === number) {
+  return middleIndex;
+  } else if (beginIndex >= endIndex) {
+  return -1;
+  } else if (array[middleIndex] < number) {
+  beginIndex = middleIndex + 1;
+  return recursiveBinarySearch(number, array, beginIndex, endIndex);
+  } else if (array[middleIndex] > number) {
+  endIndex = middleIndex - 1;
+  return recursiveBinary
+  }
+}
+
+
+// 7) 
+
+const array1 = [3, 7, 9, 12, 15, 18, 32];
+const array2 = [3, 3, 7, 41, 76]; function
+compareArrays(array1, array2) {
+let arrayOfPairs = [];
+array1.forEach(function(e, i) {
+array2.forEach(function(e2, i2) {
+if (e === e2) {
+arrayOfPairs.push([i, i2]);
+}
+});
+});
+return arrayOfPairs;
+}
+
+// 8) 
+
+function sortByValue(array){
+  function swap(array, index1, index2){ let
+  temporaryValue = array[index1];
+  array[index1] = array[index2];
+  array[index2] = temporaryValue;
+  }
+  let count = 1;
+  while (count < array.length) { let
+  swapCount = 0;
+  for (let i=0; i<array.length-count; i++) {
+  if (array[i] > array[i+1]) {
+  swap(array, i, i+1);
+  swapCount++;
+  }
+  }
+  count++;
+  }
+  return array;
+}
+
+// 9) 
+
+function returnDupes(array, array2) { let
+  dupeArray = [];
+  array.forEach(function(element) {
+  if (array2.includes(element)) {
+  dupeArray.push(element);
+  }
+  });
+  return dupeArray
+}
+
+// 10) 
+
+function sumFilteredData(array) {
+  return array.filter(function(element) {
+  return ((element > 5) && (element < 20))
+  }).reduce(function(valueToAdd, currentValue) {
+  return valueToAdd + currentValue;
+  }, 0);
+}
