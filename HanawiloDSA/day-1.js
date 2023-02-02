@@ -8,7 +8,7 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 //O(n!)- Factorial time - 5
 
-//! This is the worst complexity because it is exponential. The traveling salesman problem is an example of this.
+//! This is the worst complexity because it is exponential. The traveling salesman problem is an example of this. Finding all the permutations of a set of set.
 
 6!  6 x 5 x 4 x 3 x 2 x 1   //from the slides
 
@@ -197,8 +197,9 @@ function findFirstIndexOfNumber(number, array) {
 
 // 2) Time Complexity going to be Linear  
 
-function findEachIndexOfNumber(number,array) { let
-  arrayOfIndexes = []; //! O(1) because it is creating an empty array
+function findEachIndexOfNumber(number,array) { 
+  let arrayOfIndexes = []; //! O(1) because it is variable assignment
+
   array.forEach(function(element, index) { //! O(n) because it is looping through the array
     if (element === number) { //! O(1) because it is comparing the element to the number
       arrayOfIndexes.push(index); //! O(1) because it is pushing the index to the array
@@ -214,108 +215,136 @@ function findEachIndexOfNumber(number,array) { let
 const array = [36, 14, 1, 7, 21];
 
 function higherOrLower(array) {
-  if (array[array.length -1 ] > array[0]) {
-      return "Higher";
+  if (array[array.length -1 ] > array[0]) { //! O(1) because it is comparing the last element to the first element
+      return "Higher"; //! O(1) not changing any other part of the array
     else if (array[array.length -1 ] < array[0]) {
-      return "Lower";
+      return "Lower"; //! O(1) not changing any other part of the array
     } else {
-      return "Neither";
+      return "Neither"; //! O(1) returning a string
     }
   }
 }
 
+//! TIME COMPLEXITY: O(1)...O(4)?
+//! SPACE COMPLEXITY: O(n) because it is returning a string?
+
 // 4) 
 
 const array = [1,2,3,4,5,6,7,8];
-function determineSumOfSequentialArray(array) { let
-sum = 0;
-for (let i = 0; i < array.length; i++) { sum +=
-array[i];
+
+function determineSumOfSequentialArray(array) { 
+  let sum = 0; //! O(1) because it is creating a variable
+  for (let i = 0; i < array.length; i++) { sum +=
+    array[i]; //! O(log) because looping but also "leapfrogging" with addition assignment operator. 
+  }
+    return sum; //! O(1) because it is returning a number
 }
-return sum;
-}
+
+//! TIME COMPLEXITY: O(logn) worst case
+//! SPACE COMPLEXITY: O(1) because it is returning a number
 
 // 5) 
 
 const array = [1,2,3,4,5,6,7,8];
+
 function determineSumOfSequentialArray(array) {
-return array.length * (array.length + 1)/2;
+  return array.length * (array.length + 1)/2; //! O(1) because it is returning a number. Math operations are constant time.
 }
+
+//! TIME COMPLEXITY: O(1) because it is performing math
+//! SPACE COMPLEXITY: O(1) because it is returning a number
 
 // 6) 
 
 function searchSortedArray(number, array, beginIndex = 0, endIndex = array.length - 1) {
-  let middleIndex = Math.floor((beginIndex + endIndex)/2);
-  if (array[middleIndex] === number) {
-  return middleIndex;
-  } else if (beginIndex >= endIndex) {
-  return -1;
-  } else if (array[middleIndex] < number) {
-  beginIndex = middleIndex + 1;
-  return recursiveBinarySearch(number, array, beginIndex, endIndex);
-  } else if (array[middleIndex] > number) {
-  endIndex = middleIndex - 1;
-  return recursiveBinary
+  let middleIndex = Math.floor((beginIndex + endIndex)/2); //! O(1) because it is assigning a variable and math operations are constant time
+
+    if (array[middleIndex] === number) { //! O(1) because it is comparing the middle index to the number
+      return middleIndex; //! O(1) because it is returning a number
+    } else if (beginIndex >= endIndex) { //! O(1) because it is comparing the begin and end indices
+      return -1; //! O(1) because it is returning a number
+    } else if (array[middleIndex] < number) { //! O(1) because it is comparing the middle index to the number
+      beginIndex = middleIndex + 1; //! O(1) because it is assigning a variable
+      return recursiveBinarySearch(number, array, beginIndex, endIndex);
+    } else if (array[middleIndex] > number) { //! O(1) because it is comparing the middle index to the number
+      endIndex = middleIndex - 1; //! O(1) because it is assigning a variable
+      return recursiveBinary //! i have no idea
   }
 }
 
+//! TIME COMPLEXITY: O(logn)? is this a binary search? it gets smaller and smaller right?
+//! SPACE COMPLEXITY: O(1) because it is returning a number..i think. this one was hard.
 
 // 7) 
 
 const array1 = [3, 7, 9, 12, 15, 18, 32];
-const array2 = [3, 3, 7, 41, 76]; function
-compareArrays(array1, array2) {
-let arrayOfPairs = [];
-array1.forEach(function(e, i) {
-array2.forEach(function(e2, i2) {
-if (e === e2) {
-arrayOfPairs.push([i, i2]);
-}
+const array2 = [3, 3, 7, 41, 76]; 
+
+function compareArrays(array1, array2) {
+  let arrayOfPairs = []; //! O(1) because it is assigning a variable
+  array1.forEach(function(e, i) {
+    array2.forEach(function(e2, i2) {
+    if (e === e2) {
+      arrayOfPairs.push([i, i2]);
+    } //! O(n2) nested loops
+  });
 });
-});
-return arrayOfPairs;
+  return arrayOfPairs; //! O(n) returning an array
 }
+
+//! TIME COMPLEXITY: O(n^2) worst case
+//! SPACE COMPLEXITY: O(n) because it is returning an array
 
 // 8) 
 
 function sortByValue(array){
-  function swap(array, index1, index2){ let
-  temporaryValue = array[index1];
-  array[index1] = array[index2];
-  array[index2] = temporaryValue;
+  function swap(array, index1, index2) { 
+    let temporaryValue = array[index1]; //! O(1) because it is assigning a variable
+      array[index1] = array[index2]; //! O(1) because it is assigning a variable
+      array[index2] = temporaryValue;  //! O(1) because it is assigning a variable
   }
-  let count = 1;
-  while (count < array.length) { let
-  swapCount = 0;
-  for (let i=0; i<array.length-count; i++) {
-  if (array[i] > array[i+1]) {
-  swap(array, i, i+1);
-  swapCount++;
+  let count = 1; //! O(1) because it is assigning a variable
+  while (count < array.length) {
+    let swapCount = 0;
+    for (let i=0; i<array.length-count; i++) {
+      if (array[i] > array[i+1]) {
+      swap(array, i, i+1);
+      swapCount++;
+      }
+    } //! I'm between O(n^2) because of nested loops and O(logn) somehow I think its "leapfrogging" with the swapCount variable
+    count++;
   }
-  }
-  count++;
-  }
-  return array;
+  return array; //! O(n) because it is returning an array
 }
+
+//! TIME COMPLEXITY: O(n^2) worst case
+//! SPACE COMPLEXITY: O(n) because it is returning an array
 
 // 9) 
 
-function returnDupes(array, array2) { let
-  dupeArray = [];
+function returnDupes(array, array2) { 
+  let dupeArray = []; //! O(1) because it is assigning a variable
+
   array.forEach(function(element) {
-  if (array2.includes(element)) {
-  dupeArray.push(element);
-  }
+    if (array2.includes(element)) {
+      dupeArray.push(element);
+    } //! O(n) for a loop
   });
-  return dupeArray
+  return dupeArray //! O(n) because it is returning an array
 }
+
+//! TIME COMPLEXITY: O(n) looping
+//! SPACE COMPLEXITY: O(n) because it is returning an array
 
 // 10) 
 
 function sumFilteredData(array) {
-  return array.filter(function(element) {
-  return ((element > 5) && (element < 20))
-  }).reduce(function(valueToAdd, currentValue) {
-  return valueToAdd + currentValue;
+  return array.filter(function(element) { //! O(n) because it is looping with filter
+    return ((element > 5) && (element < 20)) //! O(1) because it is comparing the element to 5 and 20
+    }).reduce(function(valueToAdd, currentValue) { 
+    return valueToAdd + currentValue; //! O(1) math operations are constant time
   }, 0);
 }
+
+//! TIME COMPLEXITY: O(n) looping worst case
+//! SPACE COMPLEXITY: O(n) because it is returning a number
