@@ -1,14 +1,21 @@
 //todo: Problem 1: In 3-4 sentences, please explain what Big O Notation is.
 
-/* Big O Notation is a way to measure code that can scale. It looks at the big picture to measure the complexity which helps in the design and performance of the code. We are looking at the computational difficulty as the data set increases. This is basically how the requirement grow as the input grows. */
+//! Big O Notation is a way to measure code that can scale. It looks at the big picture to measure the complexity which helps in the design and performance of the code. We are looking at the computational difficulty as the data set increases. This is basically how the requirement grow as the input grows. */
 
 //todo: Problem 2: 
+
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 //O(n!)- Factorial time - 5
 
+//! This is the worst complexity because it is exponential. The traveling salesman problem is an example of this.
+
+6!  6 x 5 x 4 x 3 x 2 x 1   //from the slides
+
 
 //O(n^2)- Quadratic time - 4
+
+//! You increase the size of the input by a multiplication of the input.
 
   for(i=0; i<arr.length; i++) {
     for (j=0; j<arr.length; j++) {
@@ -17,14 +24,23 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 //O(n)- Linear time - 3 
 
-const filterArr = (arr) => {
-  return arr.filter()
-}
+//! 1 for 1. for every input you have to do one operation.
+
+arr.forEach((item) => {item*2})
 
 //O(logn)- Logarithmic time - 2
 
+//! Time execution is proportional to the logarithm of the input size. Like a For...of loop that doesn't go through the entire array. Leapfrogging.
+
+for (let i = 1; i < arr.length; i *= 2) {
+  console.log('do something')
+}
 
 //O(1)- Constant time - 1 
+
+//! Time execution is the same no matter how big or small the input is.
+
+arr.push(11);
 
 //todo: Problem 3:
 
@@ -78,7 +94,12 @@ const someFunction1 = (arr1) => {
 
 //todo: Problem 7: Please explain in 3-5 sentences why we can ignore constants and consolidate our time complexities.
 
+/* We can ignore constants because they are not going to affect the overall complexity of the code. When calculating the complexity we are only concerned with the worst case scenario. In the long run the constants are not going to affect the end result by that much. */
+
+
 //todo: Problem 8:  In 2-3 sentences, please explain what space complexity is and why we care.
+
+/* Space complexity is the amount of space that the code can take up on the system. Since, the system can only run on the amount of given physical memory, we want to use it efficiently. */
 
 //todo: Problem 9:  Given the following data TYPES, label what the space complexity is for each one:
 
