@@ -51,12 +51,13 @@ const areThereDuplicates = (arrOfLetters) => {
   let j = 1; //pointer at position of 1
   while(j<arrOfLetters.length) {
     if(arrOfLetters[i] === arrOfLetters[j]) { //checking if the pointers are identical
-      return true;
+      return true; //just a boolean, so simply need to have only one duplicate
     }
     j++; //increment the pointer
   }
 return false; 
 }
+
 //Tests 
 console.log('-------PROBLEM 2-----')
  console.log(areThereDuplicates(['a', 'a', 'c', 'd'])) //true 
@@ -87,7 +88,7 @@ const avgPair = (arr, avgTarget) => {
 
   while(x < y) {
     let avg = (arr[x] + arr[y]) / 2; // calculating the average of the pair. the index postion of x and y respectively in arr
-    
+
     if(avg === avgTarget) { // checking if the average equals the target average
       return true;
     } else if(avg < avgTarget) { // if the average is less than the target average move x up cause we undershot
