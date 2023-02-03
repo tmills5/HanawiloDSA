@@ -20,6 +20,7 @@ const countUniqueValues = (arr) => {
   return i + 1; //the count of unique values. adding 1 if i = j 
 } 
 
+console.log('-------PROBLEM 1-----')
 console.log(countUniqueValues([1,1,1,1,1,2,-3,3])); // 2
 console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13])); // 7
 console.log(countUniqueValues([])); // 0
@@ -57,7 +58,7 @@ const areThereDuplicates = (arrOfLetters) => {
 return false; 
 }
 //Tests 
-
+console.log('-------PROBLEM 2-----')
  console.log(areThereDuplicates(['a', 'a', 'c', 'd'])) //true 
  console.log(areThereDuplicates(['a', 'b', 'c'])) // false 
 // areThereDuplicates(['a', 'a', 'c', 'd']) true 
@@ -76,10 +77,34 @@ There may be more than one pair that matches the average target.
 */ 
  
 const avgPair = (arr, avgTarget) => { 
- 
-} 
- 
+  // loop through the array
+  // check if the average of the pair equals the target average
+  // if it does, return true
+  // else return false
+
+  let x = 0; // pointer at the beginning of the array
+  let y = arr.length - 1; // pointer at the end of the array
+
+  while(x < y) {
+    let avg = (arr[x] + arr[y]) / 2; // calculating the average of the pair. the index postion of x and y respectively in arr
+    
+    if(avg === avgTarget) { // checking if the average equals the target average
+      return true;
+    } else if(avg < avgTarget) { // if the average is less than the target average move x up cause we undershot
+      x++; // moving the pointer to the next element
+    } else { // if the average is greater than the target average we have to move y down cause we overshot
+      y--; // move the pointer to the previous element
+    }
+  }
+  return false; //if the average is not equal to the target average return false
+}
+
 // Test Cases:  
+console.log('-------PROBLEM 3-----')
+console.log(avgPair([1,2,3],2.5)) //true 
+console.log(avgPair([1,3,3,5,6,7,10,12,19],8)) //true 
+console.log(avgPair([-1,0,3,4,5,6], 4.1)) //false 
+console.log(avgPair([],4)) //false 
 // avgPair([1,2,3],2.5) true 
 // avgPair([1,3,3,5,6,7,10,12,19],8) true 
 // avgPair([-1,0,3,4,5,6], 4.1) false 
