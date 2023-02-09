@@ -77,7 +77,19 @@ console.log(binarySearchFirstOccurrence([1, 1, 1, 2, 2, 2, 3, 3, 3], 2));
 // Given a string, find the length of the longest substring without repeating characters. 
  
 function lengthOfLongestSubstring(s) {
+  let start = 0;
+  let charMap = {};
+  let longest = 0;
 
+  for (let i = 0; i < s.length; i++) {
+    if (charMap[s[i]] >= start) {
+      start = charMap[s[i]] + 1;
+    }
+
+    charMap[s[i]] = i;
+    longest = Math.max(longest, i - start + 1);
+  };
+  return longest;
 } 
  
 console.log(lengthOfLongestSubstring("abcabcbb")); // Output: 3 
