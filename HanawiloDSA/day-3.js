@@ -8,15 +8,36 @@ In the first example below, [100, 200, 300] is a subarray of the original array,
 not. 
 */ 
 const maxSubarraySum = (arr, n) => {
-  
-} 
+  if (arr.length < n) return null; //if the length of the array is less than the number then return null
+
+  let maxSum = 0; //max sum of the subarray
+  let tempSum = 0; //temporary sum of the subarray
+
+  for (let i = 0; i < n; i++) { //looping through the array
+    maxSum += arr[i]; // calculating the maxSum w/ addition assignment operator.
+                      // this is the initial maxSum
+  }
+  tempSum = maxSum; // the initial maxSum is also the initial tempSum
+
+  for (let i = n; i < arr.length; i++) { //looping through the array again
+    tempSum = tempSum - arr[i - n] + arr[i]; //calculating the tempSum by subtracting the first element of the subarray from the tempSum and adding the next element of the subarray
+    maxSum = Math.max(maxSum, tempSum); //comparing the maxSum and tempSum and assigning the larger value to maxSum
+  }
+  return maxSum; //returning the maxSum
+}
  
 // Test Cases:  
 // maxSubarraySum([100,200,300,400], 2) 700 
+console.log(maxSubarraySum([100,200,300,400], 2));
 // maxSubarraySum([1,4,2,10,23,3,1,0,20], 4) 39  
+console.log(maxSubarraySum([1,4,2,10,23,3,1,0,20], 4));
 // maxSubarraySum([-3,4,0,-2,6,-1], 2) 5 
+console.log(maxSubarraySum([-3,4,0,-2,6,-1], 2));
 // maxSubarraySum([3,-2,7,-4,1,-1,4,-2,1],2) 5 
+console.log(maxSubarraySum([3,-2,7,-4,1,-1,4,-2,1],2));
 // maxSubarraySum([2,3], 3) null 
+console.log(maxSubarraySum([2,3], 3));
+
 
 //todo PROBLEM 2:
 
