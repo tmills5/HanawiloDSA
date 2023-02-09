@@ -24,23 +24,25 @@ const maxSubarraySum = (arr, n) => {
 // If the target is not found in the array, return -1. 
  
 function binarySearchFirstOccurrence(nums, target) { 
-  let left = 0;
-  let right = nums.length - 1;
+  let left = 0; //left pointer
+  let right = nums.length - 1; //right pointer
+  targetOccurrence = -1; //returning -1 if target is not found and the occurrence(index in array of integers) of target if found
 
   while (left <= right) {
-    let middleIndex = Math.floor((left + right) / 2);
-    let middleValue = nums[middleIndex];
+    let middleIndex = Math.floor((left + right) / 2); //finding the middle index
+    let middleValue = nums[middleIndex]; //assigning the value of the middle index in nums to a variable
 
-    if (middleValue === target) {
-      return middleIndex;
-    } else if (middleValue < target) {
-      left = middleIndex + 1;
+    if (middleValue === target) { //if the middle value is equal to the target
+      targetOccurrence = middleIndex; //then the targetOccurrence is the middle index but there could be earlier occurrences
+      right = middleIndex - 1; //moving the right pointer left to check if there are earlier occurrences. new middle index-dont care about what comes after
+    } else if (middleValue < target) { //if the middle value is less than the target
+      left = middleIndex + 1; //then move left pointer right 
     } else {
-      right = middleIndex - 1;
+      right = middleIndex - 1;// else keep moving the right closer to the left
     }
   }
 
-  return -1;
+  return targetOccurrence; //return occurrence or -1
 } 
 
 
@@ -56,6 +58,7 @@ console.log(binarySearchFirstOccurrence([1, 2, 3, 4, 5], 3));
  
 // let nums2 = [1, 2, 3, 4, 5]; 
 // let target2 = 6; 
+console.log(binarySearchFirstOccurrence([1, 2, 3, 4, 5], 6));
 // let expected2 = -1; 
 // let result2 = binarySearchFirstOccurrence(nums2, target2); 
 // console.assert(result2 === expected2, `Test case 2 failed: expected ${expected2} but got 
@@ -63,17 +66,18 @@ console.log(binarySearchFirstOccurrence([1, 2, 3, 4, 5], 3));
  
 // let nums3 = [1, 1, 1, 2, 2, 2, 3, 3, 3]; 
 // let target3 = 2; 
+console.log(binarySearchFirstOccurrence([1, 1, 1, 2, 2, 2, 3, 3, 3], 2));
 // let expected3 = 3; 
 // let result3 = binarySearchFirstOccurrence(nums3, target3); 
-// console.assert(result3 === expected3, `Test case 3 failed: expected ${expected3} but got 
-//${result3}`);
+//console.assert(result3 === expected3, `Test case 3 failed: expected ${expected3} but got ${result3}`);
 
 
 //todo PROBLEM 3:
 
 // Given a string, find the length of the longest substring without repeating characters. 
  
-function lengthOfLongestSubstring(s) { 
+function lengthOfLongestSubstring(s) {
+
 } 
  
 console.log(lengthOfLongestSubstring("abcabcbb")); // Output: 3 
