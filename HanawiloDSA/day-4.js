@@ -40,15 +40,17 @@ const capitalizeAllLetters = (array) => {
 
     const helper = (array) => {
         if (array.length === 0) return result; //base case
+
         result.push(array[0].toUpperCase()); //push the first index of the array into the result array, capitalized
         helper(array.slice(1)); //call the helper function again, passing in the array minus the first index
+                                //slice(1) returns a new array starting at index 1
     }
 
     helper(array); //call the helper function, passing in the array
     return result; //return the result array
 }
 
-let words = ['tony', 'kim']; 
+let words = ['tony', 'kim', 'test', 'dfdf', 'dfdfd']; 
 console.log(capitalizeAllLetters(words)); // ['TONY', 'KIM'] 
 
  
@@ -152,8 +154,7 @@ const data = [
   //  - age 
   //  - rating 
 // *** If you want to know how to retrieve a value from a map,  
-// please see https://developer.mozilla.org/en-
-//US/docs/Web/JavaScript/Reference/Global_Objects/Map/get 
+// please see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get 
  
 // age (solution should look like) 
  
