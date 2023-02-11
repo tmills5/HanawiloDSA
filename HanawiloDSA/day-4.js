@@ -61,22 +61,27 @@ console.log(capitalizeAllLetters(words)); // ['TONY', 'KIM']
  
 //recursion with helper 
  
+//forEach? to iterate
+//Object.keys(obj) to get the keys of the object
+
 function collectStrings(obj) {
     let result = []; //array to hold the output
+    if (Object.keys(obj).length === 0) return result; //base case
 
     const helper = (obj) => {
-        if (Object.keys(obj).length === 0) return result; //base case
-
-        if (typeof obj[Object.keys(obj)[0]] === 'string') { //if the first key in the object is a string, push it into the result array
-            result.push(obj[Object.keys(obj)[0]]);
-        }
-
+        Object.keys(obj).forEach(key => { //iterate through the object keys
+            if (typeof obj[key] === 'object' && obj[key] !== null) { //if the "value" of the key is an object not null
+                helper(obj[key]) //then call the helper again with that object
+                // console.log(obj[key])
+            } else if (typeof obj[key] === 'string') //but if that value is a string
+                result.push(obj[key])//then push it to the result array 
+        })
     }
-
     helper(obj); //call the helper function, passing in the object
     return result; //return the result array
 }
 
+let obj1 = {}
 let obj = {
     stuff: "foo",
     data: {
@@ -92,8 +97,12 @@ let obj = {
         }
     }
 }
-console.log(Object.keys(obj)[0])
+
+//console.log(obj[Object.keys(obj)[0]])
 console.log(collectStrings(obj)) // ["foo", "bar", "baz"]) 
+console.log(collectStrings(obj1))
+
+
 
 
 //@ Problem 4: Bubble Sort
