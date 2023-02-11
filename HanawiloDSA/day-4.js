@@ -1,4 +1,4 @@
-//@ Problem 1: Recursion 
+//@ Problem 1: Recursion---------------------------------------------
 // Write a recursive function called flatTheArray which accepts an array of arrays  
 // and returns a new array with all values flattened. 
  
@@ -30,7 +30,7 @@ console.log(flatTheArray([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])) // [1,2,3]
 
 
  
-//@ Problem 2: Recursion 
+//@ Problem 2: Recursion---------------------------------------------
 // Write a recursive function called capitalizeWords.  
 // Given an array of words, return a new array containing each word capitalized. 
  
@@ -54,12 +54,11 @@ let words = ['tony', 'kim', 'test', 'dfdf', 'dfdfd'];
 console.log(capitalizeAllLetters(words)); // ['TONY', 'KIM'] 
 
  
-//@ Problem 3: Recursion 
+//@ Problem 3: Recursion---------------------------------------------
 // example 12: collect Strings 
  
 // Write a function called collectStrings which accepts an object and returns  
 // an array of all the values in the object that have a typeof string 
- 
  
 //recursion with helper 
  
@@ -74,7 +73,7 @@ function collectStrings(obj) {
     const helper = (obj) => {
         Object.keys(obj).forEach(key => { //iterate through the object keys
             if (typeof obj[key] === 'object' && obj[key] !== null) { //if the "value" of the key is an object not null
-                helper(obj[key]) //then call the helper again with that object
+                helper(obj[key]) //then call the helper again with that "object"
                 // console.log(obj[key])
             } else if (typeof obj[key] === 'string') //but if that value is a string
                 result.push(obj[key])//then push it to the result array 
@@ -106,9 +105,7 @@ console.log(collectStrings(obj)) // ["foo", "bar", "baz"])
 console.log(collectStrings(obj1))
 
 
-
-
-//@ Problem 4: Bubble Sort
+//@ Problem 4: Bubble Sort---------------------------------------------
 
 // Given the following data structure 
  
@@ -154,80 +151,114 @@ const data = [
   //  - age 
   //  - rating 
 // *** If you want to know how to retrieve a value from a map,  
-// please see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get 
- 
+// please see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get
+// The get() method returns a specified element from a Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map object.
+
+
+// const map1 = new Map();
+// map1.set('bar', 'foo');
+
+// console.log(map1.get('bar'));
+ // Expected output: "foo"
+
+// console.log(map1.get('baz'));
+ // Expected output: undefined
+
 // age (solution should look like) 
+
+const sortedByAge = (data) => {
+    //console.log(data[0].age.get('age'))
+    data.forEach(obj=> console.log(obj.age.get('age')))
+    
+    // for(let i = data.length - 1; i > 0; i--) {
+    //     for (let j = 0; j< i; j++) {
+    //         if (data[j] > data[j+1]) {
+    //             let temp = data[j];
+    //             data[j] = data[j+1];
+    //             data[j+1] = temp;
+    //         }
+    //     }
+    // }
+};
+
+console.log(sortedByAge(data))
+
+
+const sortedByRating = () => {};
+
+console.log(sortedByRating(data))
+
+
+// const sortedByAge = [  
+//   {  
+//       name: 'Tony Kim',   
+//       age: new Map([['age', 3]]),   
+//       favoriteMovie: [  
+//           {  
+//               title: 'Top Gun',   
+//               genre: 'action',   
+//               rating: 10  
+//           }  
+//       ]  
+//   },  
+//   {  
+//       name: 'John Smith',   
+//       age: new Map([['age', 35]]),   
+//       favoriteMovie: [  
+//           {  
+//               title: 'Saw',   
+//               genre: 'horror',   
+//               rating: 8  
+//           }  
+//       ]  
+//   }, 
+//   {  
+//       name: 'John Smith',   
+//       age: new Map([['age', 88]]),   
+//       favoriteMovie: [  
+//           {  
+//               title: 'Hulk',   
+//               genre: 'action',   
+//               rating: 6  
+//           }  
+//       ]  
+//   } 
+// ] 
  
-const sortedByAge = [  
-  {  
-      name: 'Tony Kim',   
-      age: new Map([['age', 3]]),   
-      favoriteMovie: [  
-          {  
-              title: 'Top Gun',   
-              genre: 'action',   
-              rating: 10  
-          }  
-      ]  
-  },  
-  {  
-      name: 'John Smith',   
-      age: new Map([['age', 35]]),   
-      favoriteMovie: [  
-          {  
-              title: 'Saw',   
-              genre: 'horror',   
-              rating: 8  
-          }  
-      ]  
-  }, 
-  {  
-      name: 'John Smith',   
-      age: new Map([['age', 88]]),   
-      favoriteMovie: [  
-          {  
-              title: 'Hulk',   
-              genre: 'action',   
-              rating: 6  
-          }  
-      ]  
-  } 
-] 
+// // favorite movie by rating (solution should look like) 
  
-// favorite movie by rating (solution should look like) 
- 
-const sortedByRating = [  
-  {  
-      name: 'John Smith',   
-      age: new Map([['age', 88]]),   
-      favoriteMovie: [  
-          {  
-              title: 'Hulk',   
-              genre: 'action',   
-              rating: 6  
-          }  
-      ]  
-  },  
-  {  
-      name: 'John Smith',   
-      age: new Map([['age', 35]]),   
-      favoriteMovie: [  
-          {  
-              title: 'Saw',   
-              genre: 'horror',   
-              rating: 8  
-          }  
-      ]  
-  }, 
-  {  
-      name: 'Tony Kim',   
-      age: new Map([['age', 3]]),   
-      favoriteMovie: [  
-          {  
-              title: 'Top Gun',   
-              genre: 'action',   
-              rating: 10  
-          }  
-      ]  
-  } 
-] 
+// const sortedByRating = [  
+//   {  
+//       name: 'John Smith',   
+//       age: new Map([['age', 88]]),   
+//       favoriteMovie: [  
+//           {  
+//               title: 'Hulk',   
+//               genre: 'action',   
+//               rating: 6  
+//           }  
+//       ]  
+//   },  
+//   {  
+//       name: 'John Smith',   
+//       age: new Map([['age', 35]]),   
+//       favoriteMovie: [  
+//           {  
+//               title: 'Saw',   
+//               genre: 'horror',   
+//               rating: 8  
+//           }  
+//       ]  
+//   }, 
+//   {  
+//       name: 'Tony Kim',   
+//       age: new Map([['age', 3]]),   
+//       favoriteMovie: [  
+//           {  
+//               title: 'Top Gun',   
+//               genre: 'action',   
+//               rating: 10  
+//           }  
+//       ]  
+//   } 
+// ]
