@@ -34,13 +34,22 @@ console.log(flatTheArray([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])) // [1,2,3]
 // Write a recursive function called capitalizeWords.  
 // Given an array of words, return a new array containing each word capitalized. 
  
-// let words = ['tony', 'kim']; 
-// capitalizedAllLetters(words); // ['TONY', 'KIM'] 
  
 const capitalizeAllLetters = (array) => { 
+    let result = []; //array to hold the output
+
+    const helper = (array) => {
+        if (array.length === 0) return result; //base case
+        result.push(array[0].toUpperCase()); //push the first index of the array into the result array, capitalized
+        helper(array.slice(1)); //call the helper function again, passing in the array minus the first index
+    }
+
+    helper(array); //call the helper function, passing in the array
+    return result; //return the result array
 }
 
-
+let words = ['tony', 'kim']; 
+console.log(capitalizeAllLetters(words)); // ['TONY', 'KIM'] 
 
  
 //@ Problem 3: Recursion 
