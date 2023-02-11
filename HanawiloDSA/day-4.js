@@ -63,6 +63,7 @@ console.log(capitalizeAllLetters(words)); // ['TONY', 'KIM']
  
 //forEach? to iterate
 //Object.keys(obj) to get the keys of the object
+//@this one took me awhile and i had to google some stuff
 
 function collectStrings(obj) {
     let result = []; //array to hold the output
