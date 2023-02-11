@@ -58,12 +58,43 @@ console.log(capitalizeAllLetters(words)); // ['TONY', 'KIM']
 // Write a function called collectStrings which accepts an object and returns  
 // an array of all the values in the object that have a typeof string 
  
-//collectStrings(obj) // ["foo", "bar", "baz"]) 
  
 //recursion with helper 
  
-function collectStrings(obj) { 
+function collectStrings(obj) {
+    let result = []; //array to hold the output
+
+    const helper = (obj) => {
+        if (Object.keys(obj).length === 0) return result; //base case
+
+        if (typeof obj[Object.keys(obj)[0]] === 'string') { //if the first key in the object is a string, push it into the result array
+            result.push(obj[Object.keys(obj)[0]]);
+        }
+
+    }
+
+    helper(obj); //call the helper function, passing in the object
+    return result; //return the result array
 }
+
+let obj = {
+    stuff: "foo",
+    data: {
+        val: {
+            thing: {
+                info: "bar",
+                moreInfo: {
+                    evenMoreInfo: {
+                        weMadeIt: "baz"
+                    }
+                }
+            }
+        }
+    }
+}
+console.log(Object.keys(obj)[0])
+console.log(collectStrings(obj)) // ["foo", "bar", "baz"]) 
+
 
 //@ Problem 4: Bubble Sort
 
