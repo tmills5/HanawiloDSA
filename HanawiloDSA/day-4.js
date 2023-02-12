@@ -166,12 +166,15 @@ const data = [
 
 // age (solution should look like) 
 
-const sortedByAge = (data) => {
-    //console.log(data[0].age.get('age'))
-    data.forEach(obj=> console.log(obj.age.get('age')))
-    
-    // for(let i = data.length - 1; i > 0; i--) {
-    //     for (let j = 0; j< i; j++) {
+const sortedByAge = (data, age) => {
+    //console.log(data[0].age.get('age')) // first age number
+    //data.forEach(obj=> console.log(obj.age.get('age'))) // i got the age numbers
+
+//!TEMPLATE:
+//let ages = data.forEach(obj=> console.log(obj.age.get('age')));
+//let age = data.age.get('age');
+    // for(let i = data.length - 1; i > 0; i--) { //wall
+    //     for (let j = 0; j< i; j++) { //iterate upwards by index position
     //         if (data[j] > data[j+1]) {
     //             let temp = data[j];
     //             data[j] = data[j+1];
@@ -179,6 +182,19 @@ const sortedByAge = (data) => {
     //         }
     //     }
     // }
+//!---------------------------
+for(let i = data.length - 1; i > 0; i--) { //wall
+    for (let j = 0; data[j].age < data[i].age; j++) { //iterate upwards by index position
+        if (data[j].age > data[j+1].age) {
+            let temp = data[j];
+            console.log(temp)
+            data[j] = data[j+1];
+            data[j+1] = temp;
+        }
+    }
+}
+
+return data;
 };
 
 console.log(sortedByAge(data))
@@ -186,7 +202,7 @@ console.log(sortedByAge(data))
 
 const sortedByRating = () => {};
 
-console.log(sortedByRating(data))
+// console.log(sortedByRating(data))
 
 
 // const sortedByAge = [  
@@ -225,7 +241,7 @@ console.log(sortedByRating(data))
 //   } 
 // ] 
  
-// // favorite movie by rating (solution should look like) 
+// favorite movie by rating (solution should look like) 
  
 // const sortedByRating = [  
 //   {  
