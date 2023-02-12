@@ -187,7 +187,6 @@ for(let i = data.length - 1; i > 0; i--) { //wall
     for (let j = 0; data[j].age < data[i].age; j++) { //iterate upwards by index position
         if (data[j].age > data[j+1].age) {
             let temp = data[j];
-            console.log(temp)
             data[j] = data[j+1];
             data[j+1] = temp;
         }
