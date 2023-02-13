@@ -148,8 +148,10 @@ const data = [
  
 // Using the bubble sort, please sort each profile 
 // by ascending order for the following properties:  
-  //  - age 
-  //  - rating 
+//    - age 
+//    - rating 
+
+
 // *** If you want to know how to retrieve a value from a map,  
 // please see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get
 // The get() method returns a specified element from a Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map object.
@@ -166,9 +168,9 @@ const data = [
 
 // age (solution should look like) 
 
-const sortedByAge = (data, age) => {
+const sortedByAge = (data) => {
     //console.log(data[0].age.get('age')) // first age number
-    //data.forEach(obj=> console.log(obj.age.get('age'))) // i got the age numbers
+    // data.forEach(obj=> console.log("173", obj.age.get('age'))) // i got the age numbers
 
 //!TEMPLATE:
 //let ages = data.forEach(obj=> console.log(obj.age.get('age')));
@@ -183,25 +185,40 @@ const sortedByAge = (data, age) => {
     //     }
     // }
 //!---------------------------
-for(let i = data.length - 1; i > 0; i--) { //wall
-    for (let j = 0; data[j].age < data[i].age; j++) { //iterate upwards by index position
-        if (data[j].age > data[j+1].age) {
-            let temp = data[j];
-            data[j] = data[j+1];
-            data[j+1] = temp;
+
+    for(let i = data.length - 1; i > 0; i--) { //wall
+    //console.log("190", data[i].age.get('age'))
+
+        for (let j = 0; j < i; j++) { //iterate upwards by index position
+
+            if (data[j].age.get('age') > data[j+1].age.get('age')) { //comparing the age value of neighbors 
+                let temp = data[j];//swapping
+                data[j] = data[j+1];
+                data[j+1] = temp;
+            }
         }
     }
-}
-
-return data;
+    return data;          
 };
 
 console.log(sortedByAge(data))
 
 
-const sortedByRating = () => {};
+const sortedByRating = (data) => {
+    for (let i = data.length - 1; i > 0; i--) { //wall
+        for (let j = 0; j < i; j++) { //iterate upwards by index position
+            if (data[j].favoriteMovie[0].rating > data[j+1].favoriteMovie[0].rating) { //comparing the rating value of neighbors but not a map.
+                                                                                    //rating of favorite movie at index 0 < j + 1 which is neighbor. Just incrementing once and and that becomes index 0
+                let temp = data[j]; //swapping
+                data[j] = data[j+1];
+                data[j+1] = temp;
+            };
+        }
+    }
+    return data;
+}
 
-// console.log(sortedByRating(data))
+console.log(sortedByRating(data))
 
 
 // const sortedByAge = [  
