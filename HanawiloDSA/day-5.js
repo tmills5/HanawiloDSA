@@ -158,33 +158,30 @@ remove(index) {
 // ** this – referrers to the linked list passed into the method 
  
 const mostFrequent = (this) => {
-  let mostNode = null;
-  let highestCount = 0;
-  let curr = this.head;
-  
-  // Traverse the linked list and compare each node with the rest
-  while (curr) {
-    let count = 1;
-    let node = curr.next;
-    
-    // Count the frequency of the current node by comparing it with the rest
+  let mostNode = null; //node with most frequent is set to null
+  let highestCount = 0; //highest count is set to 0
+  let curr = this.head; //current node is set to the head of the linked list
+  //loop through the linked list
+  while (curr) { //while on this head node 
+    let count = 1; //the count is 1
+    let node = curr.next; //move to the next node
+//looping again but counting and comparing the values of the nodes    
     while (node) {
-      if (node.value === curr.value) {
-        count++;
+      if (node.value === curr.value) { //if the value of the node is equal to the current node value-from above
+        count++; //increment the count if they are equal
       }
-      node = node.next;
+      node = node.next; //move to the next node
     }
-    
-    // Update the node with the highest frequency count
+//if the count is greater than the highest count
     if (count > highestCount) {
-      maxCount = count;
-      mostNode = curr;
+      highestCount = count; //set the highest count to the count
+      mostNode = curr; // and the most node is equal the curent node-from the first while loop (curr)
     }
     
-    curr = curr.next;
+    curr = curr.next; //move to the next node
   }
   
-  return mostNode;
+  return mostNode; //return the most frequest node
 }
 
 
